@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupTool1", "BackupTool1.csproj", "{E193E079-2AB3-44E3-AD56-F0C0905F79FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupTool", "BackupTool.csproj", "{E193E079-2AB3-44E3-AD56-F0C0905F79FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
