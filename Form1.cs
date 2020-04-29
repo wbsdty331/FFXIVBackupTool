@@ -290,9 +290,15 @@ namespace BackupTool
                 //国服策略，通过注册表读目录
                 try
                 {
-                    string installpath;
-                    installpath = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\FFXIV", "UninstallString", "");
-                    return installpath.Replace("uninst.exe", "") + "game\\My Games";
+                    string value32 = String.Empty;
+                    RegistryKey localKey32 = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32);
+                    localKey32 = localKey32.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\FFXIV");
+                    if (localKey32 != null)
+                    {
+                        value32 = localKey32.GetValue("UninstallString").ToString();
+                        localKey32.Close();
+                    }
+                    return value32.Replace("uninst.exe", "") + "game\\My Games";
                 }
                 catch
                 {
@@ -317,5 +323,11 @@ namespace BackupTool
             }
             return null;
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
