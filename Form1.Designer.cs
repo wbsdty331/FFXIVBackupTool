@@ -1,4 +1,4 @@
-﻿namespace BackupTool1
+﻿namespace BackupTool
 {
     partial class Form1
     {

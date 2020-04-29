@@ -55,7 +55,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>BackupTool1.Program</StartupObject>
+    <StartupObject>BackupTool.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
