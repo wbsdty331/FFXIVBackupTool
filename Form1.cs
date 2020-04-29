@@ -175,7 +175,6 @@ namespace BackupTool
             }
         }
         /* 以下是公共类 */
-        //读目录，国服是1，国际服是2
         //国服相关控件置灰
         public void CHNButtonDisable()
         {
@@ -283,6 +282,7 @@ namespace BackupTool
         private void Form1_Load(object sender, EventArgs e)
         {
         }
+        //读目录策略
         public string ReadGamePath(int a)
         {
             if (a == 1)
@@ -323,11 +323,5 @@ namespace BackupTool
             }
             return null;
         }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
