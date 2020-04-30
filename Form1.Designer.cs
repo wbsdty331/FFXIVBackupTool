@@ -67,9 +67,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(141, 158);
+            this.button7.Location = new System.Drawing.Point(151, 158);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(129, 44);
+            this.button7.Size = new System.Drawing.Size(129, 40);
             this.button7.TabIndex = 7;
             this.button7.Text = "还原";
             this.button7.UseVisualStyleBackColor = true;
@@ -142,9 +142,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(157, 158);
+            this.button8.Location = new System.Drawing.Point(163, 158);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(126, 44);
+            this.button8.Size = new System.Drawing.Size(126, 40);
             this.button8.TabIndex = 8;
             this.button8.Text = "还原";
             this.button8.UseVisualStyleBackColor = true;
