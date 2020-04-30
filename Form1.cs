@@ -285,7 +285,7 @@ namespace BackupTool
         private void Form1_Load(object sender, EventArgs e)
         {
         }
-        //读目录策略，1是国服，2是国际服
+        //读目录策略，1是国服官网，2是国际服，3是国服wegame(暂不使用)
         public string ReadGamePath(int a)
         {
             if (a == 1)
@@ -310,19 +310,23 @@ namespace BackupTool
             }
             else if (a == 2)
             {
-            }
-            //国际服策略，读取环境变量拼接目录
-            try
-            {
-                string userfolder = Environment.GetEnvironmentVariable("USERPROFILE");
-                if (Directory.Exists(userfolder + "\\Documents\\My Games\\FINAL FANTASY XIV - A Realm Reborn"))
+                //国际服策略，读取环境变量拼接目录
+                try
                 {
-                    return userfolder + "\\Documents\\My Games";
+                    string userfolder = Environment.GetEnvironmentVariable("USERPROFILE");
+                    if (Directory.Exists(userfolder + "\\Documents\\My Games\\FINAL FANTASY XIV - A Realm Reborn"))
+                    {
+                        return userfolder + "\\Documents\\My Games";
+                    }
+                }
+                catch
+                {
+                    return null;
                 }
             }
-            catch
+            else if (a == 3)
             {
-                return null;
+                //预留wegame相关
             }
             return null;
         }
