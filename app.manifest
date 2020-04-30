@@ -59,7 +59,6 @@
   </application>
 
   <!-- 启用 Windows 公共控件和对话框的主题(Windows XP 和更高版本) -->
-  <!--
   <dependency>
     <dependentAssembly>
       <assemblyIdentity
@@ -72,6 +71,6 @@
         />
     </dependentAssembly>
   </dependency>
-  -->
+
 
 </assembly>
