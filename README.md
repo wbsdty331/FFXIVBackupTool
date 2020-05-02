@@ -17,7 +17,7 @@ You should need to install:
 - .NET Framework 4.7 Developer Pack
 - `System.IO.Compression` (Download from NuGet)
 
-Double click `BackupTool.sln`, when the solution is first opened, the target architecture is x64, you can change it to x86 but I don't recommand it.
+Double click `BackupTool.sln`, when the solution is first opened, the target architecture is x64, you can change it to x86 but I don't recommend it.
 
 Press F5, the solution should launch after building.
 
