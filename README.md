@@ -1,7 +1,9 @@
-## Introduction
+<p align="center">
+  <h2 align="center">FFXIV Backup Tool</h1>
+</p>
 
 *a simple tool for backup [Final Fantasy XIV Online (FFXIV)](https://www.finalfantasyxiv.com/) Game Data.*
-![gamelogo](https://square-enix-games.com/ffxiv-origami/images/logo.png)
+
 
 ## Install
 
