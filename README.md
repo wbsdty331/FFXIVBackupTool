@@ -4,6 +4,7 @@
 
 *a simple tool for backup [Final Fantasy XIV Online (FFXIV)](https://www.finalfantasyxiv.com/) Game Data.*
 
+[![HitCount](http://hits.dwyl.com/wbsdty331/FFXIVBackupTool.svg)](http://hits.dwyl.com/wbsdty331/FFXIVBackupTool)
 
 ## Install
 
