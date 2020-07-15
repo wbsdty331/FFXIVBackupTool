@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using FFXIVBackupTool;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -6,14 +7,17 @@ using System.IO.Compression;
 using System.Windows.Forms;
 namespace BackupTool
 {
+    
     public partial class Form1 : Form
     {
+        string toolver = "1.0.2"; //版本号
         public Form1()
         {
             InitializeComponent();
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            
             string path = ReadGamePath(1);
             if (path == null)
             {
@@ -81,7 +85,7 @@ namespace BackupTool
         private void button1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.Description = "请选择国服游戏目录";
+            dialog.Description = "请选择国服游戏目录：";
             dialog.ShowNewFolderButton = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -91,7 +95,7 @@ namespace BackupTool
         private void button2_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.Description = "请选择当前用户文档下的My Games文件夹";
+            dialog.Description = "请选择当前用户文档下的My Games文件夹：";
             dialog.ShowNewFolderButton = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -284,6 +288,8 @@ namespace BackupTool
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text += ""+toolver;
+            this.Update();
         }
         //读目录策略，1是国服官网，2是国际服，3是国服wegame(暂不使用)
         public string ReadGamePath(int a)
@@ -329,6 +335,27 @@ namespace BackupTool
                 //预留wegame相关
             }
             return null;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://bbs.nga.cn/read.php?tid=22513951");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form about = new Form2();
+            about.ShowDialog();
+        }
+
+        private void 工具ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
