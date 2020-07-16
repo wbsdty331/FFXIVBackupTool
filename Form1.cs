@@ -7,10 +7,11 @@ using System.IO.Compression;
 using System.Windows.Forms;
 namespace BackupTool
 {
-    
+
     public partial class Form1 : Form
     {
-        string toolver = "1.0.2"; //版本号
+        public static string ToolVersion = "1.0.3";
+
         public Form1()
         {
             InitializeComponent();
@@ -288,7 +289,7 @@ namespace BackupTool
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text += ""+toolver;
+            this.Text += "" + ToolVersion;
             this.Update();
         }
         //读目录策略，1是国服官网，2是国际服，3是国服wegame(暂不使用)
@@ -337,10 +338,7 @@ namespace BackupTool
             return null;
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://bbs.nga.cn/read.php?tid=22513951");
-        }
+
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -357,5 +355,6 @@ namespace BackupTool
         {
 
         }
+
     }
 }
