@@ -3,14 +3,14 @@ using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.IO;
-using System.IO.Compression;
+using ICSharpCode.SharpZipLib.Zip;
 using System.Windows.Forms;
 namespace BackupTool
 {
 
     public partial class Form1 : Form
     {
-        public static string ToolVersion = "1.0.3";
+        public static string ToolVersion = "1.0.3"; //版本号
 
         public Form1()
         {
@@ -62,7 +62,8 @@ namespace BackupTool
                     {
                         string startPath = textBox1.Text;
                         string zipPath = @".\FFXIVBackupPackage-CHN.zip";
-                        ZipFile.CreateFromDirectory(startPath, zipPath);
+                        FastZip compressfile = new FastZip();
+                        compressfile.CreateZip(zipPath, startPath,true, @"-\.log$");
                     }
                     catch
                     {
@@ -131,7 +132,8 @@ namespace BackupTool
                         {
                             string startPath = textBox2.Text + "\\FINAL FANTASY XIV - A Realm Reborn";
                             string zipPath = @".\FFXIVBackupPackage-Intl.zip";
-                            ZipFile.CreateFromDirectory(startPath, zipPath, 0, true);
+                            FastZip compressfile = new FastZip();
+                            compressfile.CreateZip(zipPath, startPath, true, @"-\.log$");
                         }
                         catch
                         {
@@ -185,7 +187,8 @@ namespace BackupTool
                         {
                             string zipPath = @".\FFXIVBackupPackage-CHN.zip";
                             string extractPath = textBox1.Text;
-                            ZipFile.ExtractToDirectory(zipPath, extractPath);
+                            FastZip decompressfile = new FastZip();
+                            decompressfile.ExtractZip(zipPath,extractPath,null);
                         }
                         catch
                         {
@@ -235,7 +238,8 @@ namespace BackupTool
                     {
                         string zipPath = @".\FFXIVBackupPackage-Intl.zip";
                         string extractPath = textBox2.Text;
-                        ZipFile.ExtractToDirectory(zipPath, extractPath);
+                        FastZip decompressfile = new FastZip();
+                        decompressfile.ExtractZip(zipPath, extractPath, null);
                     }
                     catch
                     {

@@ -16,7 +16,7 @@
 You should need to install:
 - Visual Studio 2019
 - .NET Framework 4.7 Developer Pack
-- `System.IO.Compression` (Download from NuGet)
+- `ICSharpCode.SharpZipLib` (Download from NuGet)
 
 Double click `BackupTool.sln`, when the solution is first opened, the target architecture is x64, you can change it to x86 but I don't recommend it.
 
