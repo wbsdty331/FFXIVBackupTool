@@ -1,9 +1,9 @@
 ﻿using FFXIVBackupTool;
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.IO;
-using ICSharpCode.SharpZipLib.Zip;
 using System.Windows.Forms;
 namespace BackupTool
 {
@@ -18,7 +18,7 @@ namespace BackupTool
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
             string path = ReadGamePath(1);
             if (path == null)
             {
@@ -63,7 +63,7 @@ namespace BackupTool
                         string startPath = textBox1.Text;
                         string zipPath = @".\FFXIVBackupPackage-CHN.zip";
                         FastZip compressfile = new FastZip();
-                        compressfile.CreateZip(zipPath, startPath,true, @"-\.log$");
+                        compressfile.CreateZip(zipPath, startPath, true, @"-\.log$");
                     }
                     catch
                     {
@@ -188,7 +188,7 @@ namespace BackupTool
                             string zipPath = @".\FFXIVBackupPackage-CHN.zip";
                             string extractPath = textBox1.Text;
                             FastZip decompressfile = new FastZip();
-                            decompressfile.ExtractZip(zipPath,extractPath,null);
+                            decompressfile.ExtractZip(zipPath, extractPath, null);
                         }
                         catch
                         {
