@@ -59,5 +59,15 @@ namespace FFXIVBackupTool.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ms_symbollockup_signin_dark {
+            get {
+                object obj = ResourceManager.GetObject("ms-symbollockup_signin_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

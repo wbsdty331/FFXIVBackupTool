@@ -84,7 +84,7 @@ namespace BackupTool
             throw new NotImplementedException();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.Description = "请选择国服游戏目录：";
@@ -360,5 +360,10 @@ namespace BackupTool
 
         }
 
+        private void oneDrive备份BToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form about = new Form4();
+            about.Show();
+        }
     }
 }
