@@ -28,75 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FFXIVBackupTool.Properties.Resources.ms_symbollockup_signin_dark;
-            this.pictureBox1.Location = new System.Drawing.Point(178, 83);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(215, 41);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 40);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.Location = new System.Drawing.Point(99, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(422, 18);
+            this.label1.Size = new System.Drawing.Size(316, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "请点击下方图标，使用微软账号登录并授权本应用。";
+            this.label1.Text = "请使用第三方账号登录并授权本应用。";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(222, 142);
+            this.button2.Location = new System.Drawing.Point(226, 171);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 41);
             this.button2.TabIndex = 7;
             this.button2.Text = "开始备份(&B)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FFXIVBackupTool.Properties.Resources.msftlogin;
+            this.pictureBox1.Location = new System.Drawing.Point(131, 83);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(284, 54);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click_1);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.PictureBox1_MouseLeave);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 214);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 233);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(570, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(544, 31);
             this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(154, 24);
-            this.toolStripStatusLabel1.Text = "当前登录账户：无";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(195, 24);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 245);
+            this.ClientSize = new System.Drawing.Size(544, 264);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form4";
@@ -112,10 +113,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }

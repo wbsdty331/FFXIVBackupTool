@@ -10,13 +10,13 @@ namespace BackupTool
 
     public partial class Form1 : Form
     {
-        public static string ToolVersion = "1.0.3"; //版本号
+        public static string ToolVersion = "1.0.4"; //版本号
 
         public Form1()
         {
             InitializeComponent();
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
 
             string path = ReadGamePath(1);
@@ -26,7 +26,7 @@ namespace BackupTool
             }
             textBox1.Text = path;
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
             string path = ReadGamePath(2);
             if (path == null)
@@ -35,7 +35,7 @@ namespace BackupTool
             }
             textBox2.Text = path;
         }
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             //先判断输入框有没有路径，没有就不做任何操作
             if (textBox1.Text == "")
@@ -86,25 +86,29 @@ namespace BackupTool
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.Description = "请选择国服游戏目录：";
-            dialog.ShowNewFolderButton = false;
+            FolderBrowserDialog dialog = new FolderBrowserDialog
+            {
+                Description = "请选择国服游戏目录：",
+                ShowNewFolderButton = false
+            };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = dialog.SelectedPath;
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.Description = "请选择当前用户文档下的My Games文件夹：";
-            dialog.ShowNewFolderButton = false;
+            FolderBrowserDialog dialog = new FolderBrowserDialog
+            {
+                Description = "请选择当前用户文档下的My Games文件夹：",
+                ShowNewFolderButton = false
+            };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 textBox2.Text = dialog.SelectedPath;
             }
         }
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
             //先判断输入框有没有路径，没有就不做任何操作
             if (textBox2.Text == "")
@@ -150,7 +154,7 @@ namespace BackupTool
                 }
             }
         }
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             //先判断输入框有没有路径，没有就不做任何操作
             if (textBox1.Text == "")
@@ -204,7 +208,7 @@ namespace BackupTool
                 }
             }
         }
-        private void button8_Click(object sender, EventArgs e)
+        private void Button8_Click(object sender, EventArgs e)
         {
             //先判断输入框有没有路径，没有就不做任何操作
             if (textBox2.Text == "")
@@ -344,12 +348,9 @@ namespace BackupTool
 
 
 
-        private void button9_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Form about = new Form2();
             about.ShowDialog();
@@ -360,7 +361,7 @@ namespace BackupTool
 
         }
 
-        private void oneDrive备份BToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OneDrive备份BToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form about = new Form4();
             about.Show();

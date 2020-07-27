@@ -16,7 +16,7 @@ namespace FFXIVBackupTool
             textBox1.Focus();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
