@@ -25,8 +25,8 @@ namespace FFXIVBackupTool
         private void Form4_Load(object sender, EventArgs e)
         {
             PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
-.WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
-.Build();
+            .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+            .Build();
         }
 
 
@@ -139,22 +139,23 @@ namespace FFXIVBackupTool
             {
                 if (msalex.ErrorCode == MsalError.AuthenticationCanceledError)
                 {
-                    MessageBox.Show("中止登录");
+                    //MessageBox.Show("中止登录");
+                    toolStripStatusLabel1.Text = "中止登录";
                 }
                 else if (msalex.ErrorCode == MsalError.RequestTimeout)
                 {
-                    MessageBox.Show("请求超时");
+                    toolStripStatusLabel1.Text = "登录超时，请重试！";
 
                 }
                 else if (msalex.ErrorCode == MsalError.AccessDenied)
                 {
-                    MessageBox.Show("用户拒绝授权");
+                    toolStripStatusLabel1.Text = "用户拒绝授权本应用，请授权后再试！";
                 }
 
             }
             if (authResult != null)
             {
-                //toolStripStatusLabel1.Text = "当前登录账户：" + authResult.Account.Username;
+                toolStripStatusLabel1.Text = "当前登录账户：" + authResult.Account.Username;
                 AccessToken = authResult.AccessToken;
                 pictureBox1.Enabled = false;
                 button2.Visible = true;

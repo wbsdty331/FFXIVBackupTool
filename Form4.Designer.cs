@@ -41,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label1.Location = new System.Drawing.Point(99, 31);
+            this.label1.Location = new System.Drawing.Point(114, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(316, 24);
             this.label1.TabIndex = 1;
@@ -49,7 +49,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(226, 171);
+            this.button2.Location = new System.Drawing.Point(206, 163);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 41);
             this.button2.TabIndex = 7;
@@ -61,7 +61,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FFXIVBackupTool.Properties.Resources.msftlogin;
-            this.pictureBox1.Location = new System.Drawing.Point(131, 83);
+            this.pictureBox1.Location = new System.Drawing.Point(129, 82);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 54);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -86,8 +86,8 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(195, 24);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(154, 24);
+            this.toolStripStatusLabel1.Text = "当前登录用户：无";
             // 
             // Form4
             // 
