@@ -18,9 +18,11 @@ You should need to install:
 - .NET Framework 4.7 Developer Pack
 - `ICSharpCode.SharpZipLib` (Download from NuGet)
 
-Double click `BackupTool.sln`, when the solution is first opened, the target architecture is x64, you can change it to x86 but I don't recommend it.
+Double click `BackupTool.sln`, The first time you open this project, It will download all dependencies from NuGet. when the solution is ready, the default target architecture is x64, you can change it to x86 but I don't recommend it.
 
 Press F5, the solution should launch after building.
+
+If you want to use your Application to backup your file, Please visit [OneDrive Dev Center](https://dev.onedrive.com) to create a new App, and replace to your `ClientId`.
 
 ## License
 MIT
