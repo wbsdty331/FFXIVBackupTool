@@ -1,48 +1,36 @@
-﻿
-using Microsoft.Graph;
+﻿using Microsoft.Graph;
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace FFXIVBackupTool
 {
-
     public partial class Form4 : Form
     {
         public static IPublicClientApplication PublicClientApp;
         public static string ClientId = "954b1a06-5cbe-42e1-9061-d16329fe40e6";
         public static string[] scopes = { "user.read", "Files.Read.All", "Files.ReadWrite.All", "Sites.Read.All", "Sites.ReadWrite.All" };//权限
         public string AccessToken;
-
         public Form4()
         {
             InitializeComponent();
         }
-
         private void Form4_Load(object sender, EventArgs e)
         {
             PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
             .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
             .Build();
         }
-
-
-
-
-
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Hand;
         }
-
         private void PictureBox1_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
-
         private void Button2_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("即将把当前目录下的备份文件上传到当前用户OneDrive网盘，特别提醒：由于本功能为实验性功能，可能会有诸多不稳定因素，请不要过于依赖该功能！\n\n确认要开始备份吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
@@ -73,7 +61,6 @@ namespace FFXIVBackupTool
             //{
             //    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", AccessToken);
             //}));
-
             using (var fileStream = System.IO.File.OpenRead(filepath))
             {
                 // Use properties to specify the conflict behavior
@@ -86,11 +73,9 @@ namespace FFXIVBackupTool
             { "@microsoft.graph.conflictBehavior", "replace" }
         }
                 };
-
                 // Create the upload session
                 // itemPath does not need to be a path to an existing item
                 var uploadSession = await graphServiceClient.Me.Drive.Root.ItemWithPath(onedrivepath).CreateUploadSession(uploadProps).Request().PostAsync();
-
                 // Max slice size must be a multiple of 320 KiB
                 int maxSliceSize = 320 * 1024;
                 var fileUploadTask =
@@ -113,21 +98,15 @@ namespace FFXIVBackupTool
                     MessageBox.Show($"在上传过程中出现错误: {ex}");
                 }
             }
-
         }
-
-
-
         private void PictureBox2_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
-
         private void PictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Hand;
         }
-
         private async void PictureBox1_Click_1(object sender, EventArgs e)
         {
             AuthenticationResult authResult = null;
@@ -145,13 +124,11 @@ namespace FFXIVBackupTool
                 else if (msalex.ErrorCode == MsalError.RequestTimeout)
                 {
                     toolStripStatusLabel1.Text = "登录超时，请重试！";
-
                 }
                 else if (msalex.ErrorCode == MsalError.AccessDenied)
                 {
                     toolStripStatusLabel1.Text = "用户拒绝授权本应用，请授权后再试！";
                 }
-
             }
             if (authResult != null)
             {
@@ -161,6 +138,5 @@ namespace FFXIVBackupTool
                 button2.Visible = true;
             }
         }
-
     }
 }

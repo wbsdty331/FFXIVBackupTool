@@ -7,18 +7,15 @@ using System.IO;
 using System.Windows.Forms;
 namespace BackupTool
 {
-
     public partial class Form1 : Form
     {
         public static string ToolVersion = "1.0.4"; //版本号
-
         public Form1()
         {
             InitializeComponent();
         }
         private void Button3_Click(object sender, EventArgs e)
         {
-
             string path = ReadGamePath(1);
             if (path == null)
             {
@@ -78,12 +75,10 @@ namespace BackupTool
                 bw.RunWorkerAsync();
             }
         }
-
         private void Bw_DoWork(object sender, DoWorkEventArgs e)
         {
             throw new NotImplementedException();
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog
@@ -345,22 +340,14 @@ namespace BackupTool
             }
             return null;
         }
-
-
-
-
-
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Form about = new Form2();
             about.ShowDialog();
         }
-
         private void 工具ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
-
         private void OneDrive备份BToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form about = new Form4();
