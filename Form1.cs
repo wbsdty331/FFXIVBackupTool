@@ -4,12 +4,15 @@ using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.IO;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
+using System.IdentityModel;
 namespace BackupTool
 {
+    [SupportedOSPlatform("windows")]
     public partial class Form1 : Form
     {
-        public static string ToolVersion = "1.0.4"; //版本号
+        public static string ToolVersion = "1.0.5"; //版本号
         public Form1()
         {
             InitializeComponent();

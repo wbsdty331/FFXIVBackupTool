@@ -1,8 +1,10 @@
 ﻿using BackupTool;
 using System;
 using System.Windows.Forms;
+using System.Runtime.Versioning;
 namespace FFXIVBackupTool
 {
+    [SupportedOSPlatform("windows")]
     public partial class Form2 : Form
     {
         public Form2()

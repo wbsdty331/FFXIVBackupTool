@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FFXIVBackupTool")]
-[assembly: AssemblyCopyright("Copyright © 2019-2020")]
+[assembly: AssemblyCopyright("Copyright © 2019-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

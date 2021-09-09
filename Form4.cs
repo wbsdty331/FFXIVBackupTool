@@ -2,16 +2,18 @@
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace FFXIVBackupTool
 {
+    
     public partial class Form4 : Form
     {
         public static IPublicClientApplication PublicClientApp;
-        public static string ClientId = "954b1a06-5cbe-42e1-9061-d16329fe40e6";
-        public static string[] scopes = { "user.read", "Files.Read.All", "Files.ReadWrite.All", "Sites.Read.All", "Sites.ReadWrite.All" };//权限
+        public string ClientId = "954b1a06-5cbe-42e1-9061-d16329fe40e6";
+        public string[] scopes = { "user.read", "Files.Read.All", "Files.ReadWrite.All", "Sites.Read.All", "Sites.ReadWrite.All" };//权限
         public string AccessToken;
         public Form4()
         {
@@ -19,9 +21,7 @@ namespace FFXIVBackupTool
         }
         private void Form4_Load(object sender, EventArgs e)
         {
-            PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
-            .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
-            .Build();
+           PublicClientApp = PublicClientApplicationBuilder.Create(ClientId).WithRedirectUri("http://localhost").Build();
         }
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -99,43 +99,49 @@ namespace FFXIVBackupTool
                 }
             }
         }
-        private void PictureBox2_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-        }
-        private void PictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
         private async void PictureBox1_Click_1(object sender, EventArgs e)
         {
             AuthenticationResult authResult = null;
-            try
-            {
-                authResult = await PublicClientApp.AcquireTokenInteractive(scopes).ExecuteAsync();
-            }
-            catch (MsalException msalex)
-            {
-                if (msalex.ErrorCode == MsalError.AuthenticationCanceledError)
+            var accounts = await PublicClientApp.GetAccountsAsync();
+                try
                 {
-                    //MessageBox.Show("中止登录");
-                    toolStripStatusLabel1.Text = "中止登录";
+                    authResult = await PublicClientApp.AcquireTokenInteractive(scopes).ExecuteAsync();
                 }
-                else if (msalex.ErrorCode == MsalError.RequestTimeout)
+                catch (MsalClientException msalex)
                 {
-                    toolStripStatusLabel1.Text = "登录超时，请重试！";
-                }
-                else if (msalex.ErrorCode == MsalError.AccessDenied)
-                {
-                    toolStripStatusLabel1.Text = "用户拒绝授权本应用，请授权后再试！";
-                }
-            }
+                    if (msalex.ErrorCode == MsalError.AuthenticationCanceledError)
+                    {
+                        //MessageBox.Show("中止登录");
+                        toolStripStatusLabel1.Text = "中止登录";
+                    }
+                    else if (msalex.ErrorCode == MsalError.RequestTimeout)
+                    {
+                        toolStripStatusLabel1.Text = "登录超时，请重试！";
+                    }
+                    else if (msalex.ErrorCode == MsalError.AccessDenied)
+                    {
+                        toolStripStatusLabel1.Text = "用户拒绝授权本应用，请授权后再试！";
+                    }
+                }     
             if (authResult != null)
             {
                 toolStripStatusLabel1.Text = "当前登录账户：" + authResult.Account.Username;
                 AccessToken = authResult.AccessToken;
                 pictureBox1.Enabled = false;
                 button2.Visible = true;
+            }
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            //AuthenticationResult result;
+            try
+            {
+                await PublicClientApp.AcquireTokenInteractive(scopes).ExecuteAsync();
+            }
+            catch (Exception ff)
+            {
+                MessageBox.Show(ff.Message);
             }
         }
     }
