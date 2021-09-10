@@ -40,10 +40,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(15, 256);
+            this.button1.Location = new System.Drawing.Point(13, 210);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 47);
+            this.button1.Size = new System.Drawing.Size(120, 40);
             this.button1.TabIndex = 4;
             this.button1.Text = "许可证(&L)";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,7 +53,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(202, 91);
+            this.label1.Location = new System.Drawing.Point(243, 87);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 24);
@@ -64,20 +64,20 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(131, 136);
+            this.label2.Location = new System.Drawing.Point(156, 135);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(220, 24);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Copyright © 2019-2020";
+            this.label2.Text = "Copyright © 2019-2021";
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(370, 256);
+            this.button2.Location = new System.Drawing.Point(399, 210);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(147, 47);
+            this.button2.Size = new System.Drawing.Size(120, 40);
             this.button2.TabIndex = 0;
             this.button2.Text = "确定";
             this.button2.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label4.Location = new System.Drawing.Point(-1, 235);
+            this.label4.Location = new System.Drawing.Point(-1, 194);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(561, 3);
@@ -98,7 +98,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel1.Location = new System.Drawing.Point(169, 45);
+            this.linkLabel1.Location = new System.Drawing.Point(187, 39);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(159, 24);
@@ -112,7 +112,7 @@
             this.AcceptButton = this.button2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 319);
+            this.ClientSize = new System.Drawing.Size(532, 266);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);

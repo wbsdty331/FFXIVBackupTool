@@ -25,21 +25,18 @@ namespace FFXIVBackupTool
         {
             System.Diagnostics.Process.Start(new ProcessStartInfo
             {
-                FileName = "https://bbs.nga.cn/read.php?tid=22513951",
+                FileName = "https://github.com/wbsdty331/FFXIVBackupTool",
                 UseShellExecute = true
             });
         }
-
         private void Form2_Load(object sender, System.EventArgs e)
         {
             label1.Text += " " + Form1.ToolVersion;
         }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             Form license = new Form3();

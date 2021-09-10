@@ -44,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(139, 39);
+            this.label1.Location = new System.Drawing.Point(110, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(316, 24);
@@ -53,10 +53,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(224, 213);
+            this.button2.Location = new System.Drawing.Point(195, 165);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 55);
+            this.button2.Size = new System.Drawing.Size(139, 43);
             this.button2.TabIndex = 7;
             this.button2.Text = "开始备份(&B)";
             this.button2.UseVisualStyleBackColor = true;
@@ -66,7 +66,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FFXIVBackupTool.Properties.Resources.msftlogin;
-            this.pictureBox1.Location = new System.Drawing.Point(158, 109);
+            this.pictureBox1.Location = new System.Drawing.Point(124, 86);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 54);
@@ -98,7 +98,7 @@
             // 退出登录XToolStripMenuItem
             // 
             this.退出登录XToolStripMenuItem.Name = "退出登录XToolStripMenuItem";
-            this.退出登录XToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.退出登录XToolStripMenuItem.Size = new System.Drawing.Size(206, 34);
             this.退出登录XToolStripMenuItem.Text = "退出登录(&X)";
             this.退出登录XToolStripMenuItem.Click += new System.EventHandler(this.退出登录XToolStripMenuItem_Click);
             // 
@@ -108,10 +108,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripSplitButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 321);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 264);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(665, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(536, 31);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 352);
+            this.ClientSize = new System.Drawing.Size(536, 295);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
