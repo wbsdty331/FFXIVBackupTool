@@ -1,7 +1,7 @@
-﻿using BackupTool;
-using System;
-using System.Windows.Forms;
+﻿using System.Diagnostics;
 using System.Runtime.Versioning;
+using System.Windows.Forms;
+using BackupTool;
 namespace FFXIVBackupTool
 {
     [SupportedOSPlatform("windows")]
@@ -15,9 +15,6 @@ namespace FFXIVBackupTool
         {
             label1.Text += " " + Form1.ToolVersion;
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -29,7 +26,11 @@ namespace FFXIVBackupTool
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://bbs.nga.cn/read.php?tid=22513951");
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://bbs.nga.cn/read.php?tid=22513951",
+                UseShellExecute = true
+            });
         }
     }
 }
