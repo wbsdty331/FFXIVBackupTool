@@ -249,7 +249,6 @@
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
             this.工具ToolStripMenuItem.Size = new System.Drawing.Size(88, 28);
             this.工具ToolStripMenuItem.Text = "帮助(&H)";
-            this.工具ToolStripMenuItem.Click += new System.EventHandler(this.工具ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 

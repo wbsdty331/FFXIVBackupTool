@@ -1,18 +1,17 @@
-﻿using FFXIVBackupTool;
-using ICSharpCode.SharpZipLib.Zip;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.Versioning;
 using System.Windows.Forms;
-using System.IdentityModel;
+using FFXIVBackupTool;
+using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.Win32;
 namespace BackupTool
 {
     [SupportedOSPlatform("windows")]
     public partial class Form1 : Form
     {
-        public static string ToolVersion = "1.0.5"; //版本号
+        public const string ToolVersion = "1.0.5"; //版本号
         public Form1()
         {
             InitializeComponent();
@@ -54,29 +53,27 @@ namespace BackupTool
             }
             CHNButtonDisable();
             File.Delete(@".\FFXIVBackupPackage-CHN.zip");
-            using (var bw = new BackgroundWorker())
+            using var bw = new BackgroundWorker();
+            bw.DoWork += (s, a) =>
             {
-                bw.DoWork += (s, a) =>
+                try
                 {
-                    try
-                    {
-                        string startPath = textBox1.Text;
-                        string zipPath = @".\FFXIVBackupPackage-CHN.zip";
-                        FastZip compressfile = new FastZip();
-                        compressfile.CreateZip(zipPath, startPath, true, @"-\.log$");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("备份失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                    }
-                };
-                bw.RunWorkerCompleted += (s, b) =>
+                    string startPath = textBox1.Text;
+                    string zipPath = @".\FFXIVBackupPackage-CHN.zip";
+                    FastZip compressfile = new();
+                    compressfile.CreateZip(zipPath, startPath, true, @"-\.log$");
+                }
+                catch
                 {
-                    CHNButtonEnable();
-                    MessageBox.Show("国服数据已备份至当前目录下FFXIVBackupPackage-CHN.zip", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                };
-                bw.RunWorkerAsync();
-            }
+                    MessageBox.Show("备份失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+            };
+            bw.RunWorkerCompleted += (s, b) =>
+            {
+                CHNButtonEnable();
+                MessageBox.Show("国服数据已备份至当前目录下FFXIVBackupPackage-CHN.zip", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            };
+            bw.RunWorkerAsync();
         }
         private void Bw_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -84,11 +81,12 @@ namespace BackupTool
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog
+            FolderBrowserDialog folderBrowserDialog = new()
             {
                 Description = "请选择国服游戏目录：",
                 ShowNewFolderButton = false
             };
+            FolderBrowserDialog dialog = folderBrowserDialog;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = dialog.SelectedPath;
@@ -96,11 +94,12 @@ namespace BackupTool
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog
+            FolderBrowserDialog folderBrowserDialog = new()
             {
                 Description = "请选择当前用户文档下的My Games文件夹：",
                 ShowNewFolderButton = false
             };
+            FolderBrowserDialog dialog = folderBrowserDialog;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 textBox2.Text = dialog.SelectedPath;
@@ -126,30 +125,28 @@ namespace BackupTool
                 }
                 IntlButtonDisable();
                 File.Delete(@".\FFXIVBackupPackage-Intl.zip");
-                using (var bw = new BackgroundWorker())
+                using var bw = new BackgroundWorker();
+                bw.DoWork += (s, a) =>
                 {
-                    bw.DoWork += (s, a) =>
+                    try
                     {
-                        try
-                        {
-                            string startPath = textBox2.Text + "\\FINAL FANTASY XIV - A Realm Reborn";
-                            string zipPath = @".\FFXIVBackupPackage-Intl.zip";
-                            FastZip compressfile = new FastZip();
-                            compressfile.CreateZip(zipPath, startPath, true, @"-\.log$");
-                        }
-                        catch
-                        {
-                            MessageBox.Show("备份失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                        }
-                    };
-                    bw.RunWorkerCompleted += (s, b) =>
+                        string startPath = textBox2.Text + "\\FINAL FANTASY XIV - A Realm Reborn";
+                        string zipPath = @".\FFXIVBackupPackage-Intl.zip";
+                        FastZip compressfile = new();
+                        compressfile.CreateZip(zipPath, startPath, true, @"-\.log$");
+                    }
+                    catch
                     {
-                        //置灰的按钮还原
-                        IntlButtonEnable();
-                        MessageBox.Show("国际服数据已备份至当前目录下FFXIVBackupPackage-Intl.zip", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    };
-                    bw.RunWorkerAsync();
-                }
+                        MessageBox.Show("备份失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    }
+                };
+                bw.RunWorkerCompleted += (s, b) =>
+                {
+                    //置灰的按钮还原
+                    IntlButtonEnable();
+                    MessageBox.Show("国际服数据已备份至当前目录下FFXIVBackupPackage-Intl.zip", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                };
+                bw.RunWorkerAsync();
             }
         }
         private void Button7_Click(object sender, EventArgs e)
@@ -181,29 +178,27 @@ namespace BackupTool
                     Directory.Delete(textBox1.Text + "\\FINAL FANTASY XIV - A Realm Reborn", true);
                 }
                 CHNButtonDisable();
-                using (var bw = new BackgroundWorker())
+                using var bw = new BackgroundWorker();
+                bw.DoWork += (s, a) =>
                 {
-                    bw.DoWork += (s, a) =>
+                    try
                     {
-                        try
-                        {
-                            string zipPath = @".\FFXIVBackupPackage-CHN.zip";
-                            string extractPath = textBox1.Text;
-                            FastZip decompressfile = new FastZip();
-                            decompressfile.ExtractZip(zipPath, extractPath, null);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("还原失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                        }
-                    };
-                    bw.RunWorkerCompleted += (s, b) =>
+                        string zipPath = @".\FFXIVBackupPackage-CHN.zip";
+                        string extractPath = textBox1.Text;
+                        FastZip decompressfile = new();
+                        decompressfile.ExtractZip(zipPath, extractPath, null);
+                    }
+                    catch
                     {
-                        CHNButtonEnable();
-                        MessageBox.Show("国服数据已还原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    };
-                    bw.RunWorkerAsync();
-                }
+                        MessageBox.Show("还原失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    }
+                };
+                bw.RunWorkerCompleted += (s, b) =>
+                {
+                    CHNButtonEnable();
+                    MessageBox.Show("国服数据已还原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                };
+                bw.RunWorkerAsync();
             }
         }
         private void Button8_Click(object sender, EventArgs e)
@@ -232,29 +227,27 @@ namespace BackupTool
             if (Directory.Exists(textBox2.Text + "\\FINAL FANTASY XIV - A Realm Reborn"))
             { Directory.Delete(textBox2.Text + "\\FINAL FANTASY XIV - A Realm Reborn", true); }
             IntlButtonDisable();
-            using (var bw = new BackgroundWorker())
+            using var bw = new BackgroundWorker();
+            bw.DoWork += (s, a) =>
             {
-                bw.DoWork += (s, a) =>
+                try
                 {
-                    try
-                    {
-                        string zipPath = @".\FFXIVBackupPackage-Intl.zip";
-                        string extractPath = textBox2.Text;
-                        FastZip decompressfile = new FastZip();
-                        decompressfile.ExtractZip(zipPath, extractPath, null);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("还原失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                    }
-                };
-                bw.RunWorkerCompleted += (s, b) =>
+                    string zipPath = @".\FFXIVBackupPackage-Intl.zip";
+                    string extractPath = textBox2.Text;
+                    FastZip decompressfile = new();
+                    decompressfile.ExtractZip(zipPath, extractPath, null);
+                }
+                catch
                 {
-                    IntlButtonEnable();
-                    MessageBox.Show("国际服数据已还原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                };
-                bw.RunWorkerAsync();
-            }
+                    MessageBox.Show("还原失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+            };
+            bw.RunWorkerCompleted += (s, b) =>
+            {
+                IntlButtonEnable();
+                MessageBox.Show("国际服数据已还原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            };
+            bw.RunWorkerAsync();
         }
         /* 以下是公共函数 */
         //国服相关控件置灰
@@ -299,7 +292,7 @@ namespace BackupTool
             this.Update();
         }
         //读目录策略，1是国服官网，2是国际服，3是国服wegame(暂不使用)
-        public string ReadGamePath(int a)
+        public static string ReadGamePath(int a)
         {
             if (a == 1)
             {
@@ -347,9 +340,6 @@ namespace BackupTool
         {
             Form about = new Form2();
             about.ShowDialog();
-        }
-        private void 工具ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
         private void OneDrive备份BToolStripMenuItem_Click(object sender, EventArgs e)
         {

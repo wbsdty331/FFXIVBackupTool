@@ -1,23 +1,30 @@
-﻿using System.Net.Http.Headers;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
 namespace FFXIVBackupTool
 {
-
     public partial class Form4 : Form
     {
-        public static IPublicClientApplication PublicClientApp;
+        private static IPublicClientApplication publicClientApp;
         public string ClientId = "954b1a06-5cbe-42e1-9061-d16329fe40e6";
         public string[] scopes = { "user.read", "Files.Read.All", "Files.ReadWrite.All", "Sites.Read.All", "Sites.ReadWrite.All" };//权限
         public string AccessToken;
+
+        public static IPublicClientApplication PublicClientApp { get => publicClientApp; set => publicClientApp = value; }
+
         public Form4()
         {
             InitializeComponent();
         }
         private void Form4_Load(object sender, EventArgs e)
         {
-           PublicClientApp = PublicClientApplicationBuilder.Create(ClientId).WithRedirectUri("http://localhost").Build();
+            PublicClientApp = PublicClientApplicationBuilder.Create(ClientId).WithRedirectUri("http://localhost").Build();
+
         }
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -29,7 +36,7 @@ namespace FFXIVBackupTool
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("即将把当前目录下的备份文件上传到当前用户OneDrive网盘，特别提醒：由于本功能为实验性功能，可能会有诸多不稳定因素，请不要过于依赖该功能！\n\n确认要开始备份吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            var result = MessageBox.Show("即将把当前目录下的备份文件上传到当前用户OneDrive网盘，特别提醒：由于本功能为实验性功能，可能会有诸多不稳定因素，请不要过于依赖该功能！\n\n确认要开始备份吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.Yes)
             {
                 if (System.IO.File.Exists(@".\FFXIVBackupPackage-CHN.zip") && System.IO.File.Exists(@".\FFXIVBackupPackage-Intl.zip"))
@@ -47,68 +54,75 @@ namespace FFXIVBackupTool
         }
         public async void UploadToOneDrive(string filepath, string onedrivepath)
         {
-    var graphServiceClient = new GraphServiceClient(
-    new DelegateAuthenticationProvider((requestMessage) =>
-    {
-        requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", AccessToken);
-        return Task.CompletedTask;
-    }));
+            var graphServiceClient = new GraphServiceClient(
+            new DelegateAuthenticationProvider((requestMessage) =>
+            {
+                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", AccessToken);
+                return Task.CompletedTask;
+            }));
             //GraphServiceClient graphClient = new GraphServiceClient("https://graph.microsoft.com/v1.0", new DelegateAuthenticationProvider(async (requestMessage) =>
             //{
             //    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", AccessToken);
             //}));
-            using (var fileStream = System.IO.File.OpenRead(filepath))
+            using var fileStream = System.IO.File.OpenRead(filepath);
+            var uploadProps = new DriveItemUploadableProperties
             {
-                // Use properties to specify the conflict behavior
-                // in this case, replace
-                var uploadProps = new DriveItemUploadableProperties
-                {
-                    ODataType = null,
-                    AdditionalData = new Dictionary<string, object>
+                ODataType = null,
+                AdditionalData = new Dictionary<string, object>
         {
             { "@microsoft.graph.conflictBehavior", "replace" }
         }
-                };
-                // Create the upload session
-                // itemPath does not need to be a path to an existing item
-                var uploadSession = await graphServiceClient.Me.Drive.Root.ItemWithPath(onedrivepath).CreateUploadSession(uploadProps).Request().PostAsync();
-                // Max slice size must be a multiple of 320 KiB
-                int maxSliceSize = 320 * 1024;
-                var fileUploadTask =
-                    new LargeFileUploadTask<DriveItem>(uploadSession, fileStream, maxSliceSize);
-                try
+            };
+            // Create the upload session
+            // itemPath does not need to be a path to an existing item
+            var uploadSession = await graphServiceClient.Me.Drive.Root.ItemWithPath(onedrivepath).CreateUploadSession(uploadProps).Request().PostAsync();
+            // Max slice size must be a multiple of 320 KiB
+            int maxSliceSize = 320 * 1024;
+            var fileUploadTask =
+                new LargeFileUploadTask<DriveItem>(uploadSession, fileStream, maxSliceSize);
+            try
+            {
+                // Upload the file
+                var uploadResult = await fileUploadTask.UploadAsync();
+                if (uploadResult.UploadSucceeded)
                 {
-                    // Upload the file
-                    var uploadResult = await fileUploadTask.UploadAsync();
-                    if (uploadResult.UploadSucceeded)
-                    {
-                        toolStripStatusLabel1.Text = filepath + " 上传成功";
-                    }
-                    else
-                    {
-                        MessageBox.Show("上传失败，请检查网络！");
-                    }
+                    toolStripStatusLabel1.Text = filepath + " 上传成功";
                 }
-                catch (ServiceException ex)
+                else
                 {
-                    MessageBox.Show($"在上传过程中出现错误: {ex}");
+                    MessageBox.Show("上传失败，请检查网络！");
                 }
+            }
+            catch (ServiceException ex)
+            {
+                MessageBox.Show($"在上传过程中出现错误: {ex}");
             }
         }
         private async void PictureBox1_Click_1(object sender, EventArgs e)
         {
+            var options = new SystemWebViewOptions()
+            {
+                HtmlMessageSuccess = "<b>Success!</b>",
+                HtmlMessageError = "<b>Fail!</b>",
+            };
             AuthenticationResult authResult = null;
             var accounts = await PublicClientApp.GetAccountsAsync();
+            try
+            {
+                authResult = await PublicClientApp.AcquireTokenSilent(scopes, accounts.FirstOrDefault()).ExecuteAsync();
+            }
+            catch (MsalUiRequiredException)
+            {
                 try
                 {
-                    authResult = await PublicClientApp.AcquireTokenInteractive(scopes).ExecuteAsync();
+                    toolStripStatusLabel1.Text = "请在新打开的浏览器窗口完成授权操作。";
+                    authResult = await PublicClientApp.AcquireTokenInteractive(scopes).WithSystemWebViewOptions(options).ExecuteAsync();
                 }
                 catch (MsalClientException msalex)
                 {
                     if (msalex.ErrorCode == MsalError.AuthenticationCanceledError)
                     {
-                        //MessageBox.Show("中止登录");
-                        toolStripStatusLabel1.Text = "中止登录";
+                        toolStripStatusLabel1.Text = "用户中止登陆，操作取消";
                     }
                     else if (msalex.ErrorCode == MsalError.RequestTimeout)
                     {
@@ -118,26 +132,32 @@ namespace FFXIVBackupTool
                     {
                         toolStripStatusLabel1.Text = "用户拒绝授权本应用，请授权后再试！";
                     }
-                }     
+                }
+            }
             if (authResult != null)
             {
                 toolStripStatusLabel1.Text = "当前登录账户：" + authResult.Account.Username;
                 AccessToken = authResult.AccessToken;
                 pictureBox1.Enabled = false;
                 button2.Visible = true;
+                toolStripSplitButton1.Visible = true;
             }
         }
-
-        private async void button1_Click(object sender, EventArgs e)
+        private async void 退出登录XToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //AuthenticationResult result;
-            try
+            var result = MessageBox.Show("确认要退出登录吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
             {
-                await PublicClientApp.AcquireTokenInteractive(scopes).ExecuteAsync();
-            }
-            catch (Exception ff)
-            {
-                MessageBox.Show(ff.Message);
+                var accounts = (await publicClientApp.GetAccountsAsync()).ToList();
+                toolStripStatusLabel1.Text = "已退出登录";
+                while (accounts.Any())
+                {
+                    await publicClientApp.RemoveAsync(accounts.First());
+                    accounts = (await publicClientApp.GetAccountsAsync()).ToList();
+                }
+                button2.Visible = false;
+                pictureBox1.Enabled = true;
+                toolStripSplitButton1.Visible = false;
             }
         }
     }
