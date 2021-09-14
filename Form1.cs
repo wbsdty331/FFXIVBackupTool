@@ -339,7 +339,7 @@ namespace BackupTool
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Form about = new Form2();
-            about.Show();
+            about.ShowDialog();
         }
         private void OneDrive备份BToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -43,20 +43,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(110, 37);
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(57, 44);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 24);
+            this.label1.Size = new System.Drawing.Size(281, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "请使用第三方账号登录并授权本应用。";
+            this.label1.Text = "请使用第三方账户登录后授权本应用。";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(195, 165);
+            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(125, 185);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 43);
+            this.button2.Size = new System.Drawing.Size(133, 37);
             this.button2.TabIndex = 7;
             this.button2.Text = "开始备份(&B)";
             this.button2.UseVisualStyleBackColor = true;
@@ -66,7 +67,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FFXIVBackupTool.Properties.Resources.msftlogin;
-            this.pictureBox1.Location = new System.Drawing.Point(124, 86);
+            this.pictureBox1.Location = new System.Drawing.Point(57, 89);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 54);
@@ -91,7 +92,7 @@
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(21, 28);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(21, 24);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             this.toolStripSplitButton1.Visible = false;
             // 
@@ -104,14 +105,15 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripSplitButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 264);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 281);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(536, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(399, 27);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
@@ -120,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 295);
+            this.ClientSize = new System.Drawing.Size(399, 308);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -130,7 +132,7 @@
             this.MaximizeBox = false;
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "OneDrive 备份（实验性功能）";
+            this.Text = "OneDrive 备份";
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
