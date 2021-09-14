@@ -28,7 +28,6 @@ namespace FFXIVBackupTool
         private void Form2_Load(object sender, System.EventArgs e)
         {
             label1.Text += " " + Form1.ToolVersion;
-            pictureBox1.Image = Properties.Resources.msftlogin;
         }
         private void button2_Click_1(object sender, EventArgs e)
         {
