@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <h2 align="center">FFXIV Backup Tool</h1>
 </p>
 
@@ -16,10 +16,20 @@ You should need to install:
 - .NET 5.0 SDK
 - `ICSharpCode.SharpZipLib` (Download from NuGet)
 
-the default target architecture is x64, you can change it to x86 but I don't recommend it.
+Clone this project and use NuGet to download dependencies, Then you may build it.
 
-Press F5, the solution should launch after building.
+To use your own Application ClientId to Login Microsoft Account and use OneDrive backup feature, Please visit [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade) and create a new app.
 
-If you want to use your Application to backup your file, Please visit [OneDrive Dev Center](https://dev.onedrive.com) to create a new App, and replace to your `ClientId`.
+> 🔴 Note: FFXIVBackupTool requires these permission:
+
+```
+Files.Read.All
+Files.ReadWrite.All
+Sites.Read.All
+Sites.ReadWrite.All
+User.Read
+```
+
+Then replace `clientId` in code.
 ## License
 MIT
