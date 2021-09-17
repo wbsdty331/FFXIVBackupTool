@@ -112,7 +112,7 @@
             this.button1.Location = new System.Drawing.Point(542, 35);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 34);
+            this.button1.Size = new System.Drawing.Size(27, 27);
             this.button1.TabIndex = 3;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(37, 215);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -197,7 +197,7 @@
             this.button4.Location = new System.Drawing.Point(542, 35);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 31);
+            this.button4.Size = new System.Drawing.Size(27, 27);
             this.button4.TabIndex = 5;
             this.button4.Text = "...";
             this.button4.UseVisualStyleBackColor = true;
@@ -209,7 +209,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(400, 31);
+            this.textBox2.Size = new System.Drawing.Size(400, 27);
             this.textBox2.TabIndex = 3;
             // 
             // label2
@@ -237,7 +237,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.工具TToolStripMenuItem,
@@ -254,13 +254,13 @@
             this.工具TToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.oneDrive备份BToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
-            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(81, 28);
+            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(84, 28);
             this.工具TToolStripMenuItem.Text = "工具(&T)";
             // 
             // oneDrive备份BToolStripMenuItem
             // 
             this.oneDrive备份BToolStripMenuItem.Name = "oneDrive备份BToolStripMenuItem";
-            this.oneDrive备份BToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.oneDrive备份BToolStripMenuItem.Size = new System.Drawing.Size(255, 34);
             this.oneDrive备份BToolStripMenuItem.Text = "OneDrive 备份(&B)";
             this.oneDrive备份BToolStripMenuItem.Click += new System.EventHandler(this.OneDrive备份BToolStripMenuItem_Click);
             // 
@@ -269,13 +269,13 @@
             this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(88, 28);
             this.工具ToolStripMenuItem.Text = "帮助(&H)";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(183, 34);
             this.toolStripMenuItem2.Text = "关于(&A)...";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 

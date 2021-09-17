@@ -33,5 +33,14 @@ namespace FFXIVBackupTool
         {
             this.Close();
         }
+
+        private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = e.LinkText,
+                UseShellExecute = true
+            });
+        }
     }
 }

@@ -36,6 +36,8 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.退出登录XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +46,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(57, 44);
+            this.label1.Location = new System.Drawing.Point(84, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(281, 20);
@@ -54,7 +56,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(125, 185);
+            this.button2.Location = new System.Drawing.Point(153, 219);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 37);
@@ -67,7 +69,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FFXIVBackupTool.Properties.Resources.msftlogin;
-            this.pictureBox1.Location = new System.Drawing.Point(57, 89);
+            this.pictureBox1.Location = new System.Drawing.Point(84, 97);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 54);
@@ -81,7 +83,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(154, 24);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(137, 20);
             this.toolStripStatusLabel1.Text = "当前登录用户：无";
             // 
             // toolStripSplitButton1
@@ -99,7 +101,7 @@
             // 退出登录XToolStripMenuItem
             // 
             this.退出登录XToolStripMenuItem.Name = "退出登录XToolStripMenuItem";
-            this.退出登录XToolStripMenuItem.Size = new System.Drawing.Size(206, 34);
+            this.退出登录XToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
             this.退出登录XToolStripMenuItem.Text = "退出登录(&X)";
             this.退出登录XToolStripMenuItem.Click += new System.EventHandler(this.退出登录XToolStripMenuItem_Click);
             // 
@@ -113,16 +115,42 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 281);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(399, 27);
+            this.statusStrip1.Size = new System.Drawing.Size(452, 27);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox1.Location = new System.Drawing.Point(84, 175);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(67, 24);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "国服";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox2.Location = new System.Drawing.Point(285, 175);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(83, 24);
+            this.checkBox2.TabIndex = 15;
+            this.checkBox2.Text = "国际服";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 308);
+            this.ClientSize = new System.Drawing.Size(452, 308);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -150,5 +178,7 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem 退出登录XToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

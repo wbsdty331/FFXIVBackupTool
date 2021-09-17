@@ -24,6 +24,7 @@ namespace FFXIVBackupTool
         private void Form4_Load(object sender, EventArgs e)
         {
             PublicClientApp = PublicClientApplicationBuilder.Create(ClientId).WithRedirectUri("http://localhost").Build();
+            
 
         }
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -36,20 +37,45 @@ namespace FFXIVBackupTool
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("即将把当前目录下的备份文件上传到当前用户OneDrive网盘，特别提醒：由于本功能为实验性功能，可能会有诸多不稳定因素，请不要过于依赖该功能！\n\n确认要开始备份吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.Yes)
+            if (checkBox1.Checked || checkBox2.Checked)
             {
-                if (System.IO.File.Exists(@".\FFXIVBackupPackage-CHN.zip") && System.IO.File.Exists(@".\FFXIVBackupPackage-Intl.zip"))
+                var result = MessageBox.Show("即将把当前目录下的备份文件上传到当前用户OneDrive网盘。\n\n提醒：由于本功能为实验性功能，可能会有诸多不稳定因素，请不要过于依赖该功能！\n\n确认要开始备份吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
                 {
-                    toolStripStatusLabel1.Text = "正在上传文件，在提示完成前请勿关闭本窗口！";
-                    UploadToOneDrive(@".\FFXIVBackupPackage-CHN.zip", @"/FFXIVBackupPackage-CHN.zip");
-                    UploadToOneDrive(@".\FFXIVBackupPackage-Intl.zip", @"/FFXIVBackupPackage-Intl.zip");
+                    toolStripSplitButton1.Visible = false;
+                    //看国服是否选择了
+                    if (checkBox1.Checked)
+                    {
+                        if (System.IO.File.Exists(@".\FFXIVBackupPackage-CHN.zip")){
+                            toolStripStatusLabel1.Text = "正在上传国服文件，在提示完成前请勿关闭本窗口！";
+                            UploadToOneDrive(@".\FFXIVBackupPackage-CHN.zip", @"/FFXIVBackupPackage-CHN.zip");
+                        }
+                        else
+                        {
+                            MessageBox.Show("国服备份文件不存在！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                    if (checkBox2.Checked)
+                    {
+                        if (System.IO.File.Exists(@".\FFXIVBackupPackage-Intl.zip"))
+                        {
+                            toolStripStatusLabel1.Text = "正在上传国际服文件，在提示完成前请勿关闭本窗口！";
+                            UploadToOneDrive(@".\FFXIVBackupPackage-Intl.zip", @"/FFXIVBackupPackage-Intl.zip");
+                        }
+                        else
+                        {
+                            MessageBox.Show("国际服备份文件不存在！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                    
                 }
-                else
-                {
-                    MessageBox.Show("请将国服和国际服都备份后再上传！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+
+            }
+            else
+            {
+                MessageBox.Show("请选择要备份的功能！", "提示",MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         public async void UploadToOneDrive(string filepath, string onedrivepath)
@@ -69,14 +95,12 @@ namespace FFXIVBackupTool
             {
                 ODataType = null,
                 AdditionalData = new Dictionary<string, object>
-        {
-            { "@microsoft.graph.conflictBehavior", "replace" }
-        }
+                {
+                    { "@microsoft.graph.conflictBehavior", "replace" }
+                }
             };
-            // Create the upload session
-            // itemPath does not need to be a path to an existing item
             var uploadSession = await graphServiceClient.Me.Drive.Root.ItemWithPath(onedrivepath).CreateUploadSession(uploadProps).Request().PostAsync();
-            // Max slice size must be a multiple of 320 KiB
+            // OneDrive 分片 320 * 1024KB
             int maxSliceSize = 320 * 1024;
             var fileUploadTask =
                 new LargeFileUploadTask<DriveItem>(uploadSession, fileStream, maxSliceSize);
@@ -87,6 +111,7 @@ namespace FFXIVBackupTool
                 if (uploadResult.UploadSucceeded)
                 {
                     toolStripStatusLabel1.Text = filepath + " 上传成功";
+                    toolStripSplitButton1.Visible = true;
                 }
                 else
                 {
@@ -102,8 +127,8 @@ namespace FFXIVBackupTool
         {
             var options = new SystemWebViewOptions()
             {
-                HtmlMessageSuccess = "<b>Success!</b>",
-                HtmlMessageError = "<b>Fail!</b>",
+                HtmlMessageSuccess = "<b>Login Success, now you may close this window.</b>",
+                HtmlMessageError = "<b>Authorization Failed!　Please try again?</b>",
             };
             AuthenticationResult authResult = null;
             var accounts = await PublicClientApp.GetAccountsAsync();
@@ -141,6 +166,9 @@ namespace FFXIVBackupTool
                 pictureBox1.Enabled = false;
                 button2.Visible = true;
                 toolStripSplitButton1.Visible = true;
+                checkBox1.Visible = true; 
+                checkBox2.Visible = true;
+
             }
         }
         private async void 退出登录XToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,6 +186,8 @@ namespace FFXIVBackupTool
                 button2.Visible = false;
                 pictureBox1.Enabled = true;
                 toolStripSplitButton1.Visible = false;
+                checkBox1.Visible = false;
+                checkBox2.Visible = false;
             }
         }
     }
