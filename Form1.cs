@@ -290,6 +290,7 @@ namespace BackupTool
         {
             this.Text += "" + ToolVersion;
             this.Update();
+            
         }
         //读目录策略，1是国服官网，2是国际服，3是国服wegame(暂不使用)
         public static string ReadGamePath(int a)
