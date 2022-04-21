@@ -6,14 +6,14 @@ a simple tool for backup [Final Fantasy XIV Online (FFXIV)](https://www.finalfan
 
 ## Install
 
-- Make sure you have installed [.NET 5.0 Runtime](https://dotnet.microsoft.com/download).
+- Make sure you have installed [.NET 6.0 Runtime](https://dotnet.microsoft.com/download).
 - Download the latest release from [here](https://github.com/wbsdty331/FFXIVBackupTool/releases).
 
 ## How to Build
 
 You should need to install:
-- Visual Studio 2019
-- .NET 5.0 SDK
+- Visual Studio 2019/2022
+- .NET 6.0 SDK
 - `ICSharpCode.SharpZipLib` (Download from NuGet)
 
 Clone this project and use NuGet to download dependencies, Then you may build it.
